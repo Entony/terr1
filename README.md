@@ -17,6 +17,9 @@
 
 ### Решение 1
 
+Ссылка на main.tf:
+https://github.com/Entony/terr1/blob/main/terraform/main.tf
+
 Согласно .gitignore, допустимо сохранить личную, секретную информацию в файле personal.auto.tfvars, о чем даже вещает комментарий - own secret vars store - хранилище личных секретных переменных. 
 
 Выполнен код проекта:
@@ -84,6 +87,9 @@ keep_locally (Boolean) If true, then the Docker image won't be deleted on destro
 
 
 ### Задание 2*
+
+Ссылка на main.tf:
+https://github.com/Entony/terr1/blob/main/terr_context/main.tf
 
 1. Создайте в облаке ВМ. Сделайте это через web-консоль, чтобы не слить по незнанию токен от облака в github(это тема следующей лекции). Если хотите - попробуйте сделать это через terraform, прочитав документацию yandex cloud. Используйте файл personal.auto.tfvars и гитигнор или иной, безопасный способ передачи токена!
 2. Подключитесь к ВМ по ssh и установите стек docker.
