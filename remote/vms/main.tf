@@ -19,14 +19,12 @@
 
 #Задание 4
 
-module "module_network" {
-  source   = "./module_network"
-  net_name = "develop"
-  subnets = [
-    { zone = "ru-central1-a", cidr = "10.0.1.0/24" },
-    { zone = "ru-central1-b", cidr = "10.0.2.0/24" },
-    #{ zone = "ru-central1-c", cidr = "10.0.3.0/24" },
-  ]
+data "terraform_remote_state" "vpc" {
+  backend = "local"
+
+  config = {
+    path = "../vpc/terraform.tfstate"
+  }
 }
 
 module "marketing-vm" {
@@ -44,8 +42,8 @@ module "marketing-vm" {
   #subnet_ids     = [module.module_network.subnet.id]
 
   # Задание 4
-  network_id   = module.module_network.subnets["ru-central1-a"].network_id
-  subnet_ids   = [module.module_network.subnets["ru-central1-a"].id]
+  network_id   = data.terraform_remote_state.vpc.outputs.network_subnets["ru-central1-a"].network_id
+  subnet_ids   = [data.terraform_remote_state.vpc.outputs.network_subnets["ru-central1-a"].id]
   subnet_zones = ["ru-central1-a"]
 
 
@@ -82,8 +80,8 @@ module "analytics-vm" {
 
   # Задание 4
 
-  network_id   = module.module_network.subnets["ru-central1-b"].network_id
-  subnet_ids   = [module.module_network.subnets["ru-central1-b"].id]
+  network_id   = data.terraform_remote_state.vpc.outputs.network_subnets["ru-central1-b"].network_id
+  subnet_ids   = [data.terraform_remote_state.vpc.outputs.network_subnets["ru-central1-b"].id]
   subnet_zones = ["ru-central1-b"]
 
   instance_name  = "analytics"
