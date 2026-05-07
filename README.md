@@ -85,6 +85,8 @@ terraform {
 
 ### Решение 2
 
+[providers.tf](src/providers.tf)
+
 Создана ветка terraform-05 из terraform-04.
 S3 bucket был создан в предыдущем ДЗ:
 
@@ -136,3 +138,74 @@ S3 bucket был создан в предыдущем ДЗ:
 Ссылка на PR:
 
 https://github.com/Entony/terr1/pull/1
+
+
+### Задание 4
+
+1. Напишите переменные с валидацией и протестируйте их, заполнив default верными и неверными значениями. Предоставьте скриншоты проверок из terraform console.
+
+- type=string, description="ip-адрес" — проверка, что значение переменной содержит верный IP-адрес с помощью функций cidrhost() или regex(). Тесты: "192.168.0.1" и "1920.1680.0.1";
+- type=list(string), description="список ip-адресов" — проверка, что все адреса верны. Тесты: ["192.168.0.1", "1.1.1.1", "127.0.0.1"] и ["192.168.0.1", "1.1.1.1", "1270.0.0.1"].
+
+### Решение 4
+
+[var_ip.tf](src/var_ip.tf)
+
+Проверка с правильным значением IP-адреса:
+
+![alt text](image-8.png)
+
+Проверка с неправильным значением:
+
+![alt text](image-9.png)
+
+Проверка с правильным списком адресов:
+
+![alt text](image-10.png)
+
+Проверка с неправильным списком адресов:
+
+![alt text](image-11.png)
+
+
+### Задание 5*
+
+Напишите переменные с валидацией:
+type=string, description="любая строка" — проверка, что строка не содержит символов верхнего регистра;
+type=object — проверка, что одно из значений равно true, а второе false, т. е. не допускается false false и true true:
+```
+variable "in_the_end_there_can_be_only_one" {
+    description="Who is better Connor or Duncan?"
+    type = object({
+        Dunkan = optional(bool)
+        Connor = optional(bool)
+    })
+
+    default = {
+        Dunkan = true
+        Connor = false
+    }
+
+    validation {
+        error_message = "There can be only one MacLeod"
+        condition = <проверка>
+    }
+}
+```
+
+### Решение 5
+
+[var_ex5.tf)](src/var_ex5.tf)
+
+Проверка на верхний регистр:
+
+![alt text](image-12.png)
+
+Когда правильно:
+
+![alt text](image-13.png)
+
+Проверка отсутствия двух одинаковых значений, если пара одниаковых значения:
+
+![alt text](image-14.png)
+
