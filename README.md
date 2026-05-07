@@ -215,7 +215,7 @@ variable "in_the_end_there_can_be_only_one" {
 
 ### Решение 6
 
-[Jenkinsfile)](Jenkinsfile)
+[Jenkinsfile](Jenkinsfile)
 
 Выбор действия (apply или destroy)
 
@@ -226,6 +226,10 @@ variable "in_the_end_there_can_be_only_one" {
 ![alt text](image-16.png)
 
 ![alt text](image-17.png)
+
+С помощью Jenfkins инфраструктура уничтожена:
+
+![alt text](image-18.png)
 
 
 
