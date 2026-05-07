@@ -209,3 +209,12 @@ variable "in_the_end_there_can_be_only_one" {
 
 ![alt text](image-14.png)
 
+
+### Задание 6*
+
+
+### Решение 6
+
+Выбор действия (apply или destroy)
+
+![alt text](image-15.png)

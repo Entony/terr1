@@ -20,10 +20,20 @@ pipeline {
 
         stage('Terraform Init') {
             steps {
-                dir('src') {
-                    sh 'terraform init'
-            } }
+                withCredentials([
+                    string(credentialsId: 'YC_ACCESS_KEY', variable: 'ACCESS_KEY'),
+                    string(credentialsId: 'YC_SECRET_KEY', variable: 'SECRET_KEY')
+        ]) {
+                    dir('src') { 
+                        sh """
+                            terraform init \
+                             -backend-config="access_key=${ACCESS_KEY}" \
+                             -backend-config="secret_key=${SECRET_KEY}"
+                        """
+            }
         }
+    }
+}
 
         stage('Terraform Action') {
             steps {
