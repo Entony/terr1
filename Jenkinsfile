@@ -20,15 +20,15 @@ pipeline {
 
         stage('Terraform Init') {
             steps {
-                dir('src')
+                dir('src') {
                     sh 'terraform init'
-            }
+            } }
         }
 
         stage('Terraform Action') {
             steps {
                 script {
-                    dir('src')
+                    dir('src') {
                         ithEnv([
                             "YC_SERVICE_ACCOUNT_KEY_FILE=${YC_KEY_FILE}",
                             "YC_CLOUD_ID=${YC_CLOUD_ID}",
@@ -39,6 +39,7 @@ pipeline {
                             } else {
                                 sh 'terraform destroy -auto-approve'
                         }
+                    }
                     }
                 }
             }
