@@ -20,23 +20,24 @@ pipeline {
 
         stage('Terraform Init') {
             steps {
-                sh 'terraform init'
+                dir('src')
+                    sh 'terraform init'
             }
         }
 
         stage('Terraform Action') {
             steps {
                 script {
-                    // Переменные окружения для провайдера Yandex
-                    withEnv([
-                        "YC_SERVICE_ACCOUNT_KEY_FILE=${YC_KEY_FILE}",
-                        "YC_CLOUD_ID=${YC_CLOUD_ID}",
-                        "YC_FOLDER_ID=${YC_FOLDER_ID}"
+                    dir('src')
+                        ithEnv([
+                            "YC_SERVICE_ACCOUNT_KEY_FILE=${YC_KEY_FILE}",
+                            "YC_CLOUD_ID=${YC_CLOUD_ID}",
+                            "YC_FOLDER_ID=${YC_FOLDER_ID}"
                     ]) {
-                        if (params.ACTION == 'apply') {
-                            sh 'terraform apply -auto-approve'
-                        } else {
-                            sh 'terraform destroy -auto-approve'
+                            if (params.ACTION == 'apply') {
+                                sh 'terraform apply -auto-approve'
+                            } else {
+                                sh 'terraform destroy -auto-approve'
                         }
                     }
                 }
