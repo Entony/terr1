@@ -1,18 +1,18 @@
 ###cloud vars
-variable "token" {
-  type        = string
-  description = "OAuth-token; https://cloud.yandex.ru/docs/iam/concepts/authorization/oauth-token"
-}
+# variable "token" {
+#   type        = string
+#   description = "OAuth-token; https://cloud.yandex.ru/docs/iam/concepts/authorization/oauth-token"
+# }
 
-variable "cloud_id" {
-  type        = string
-  description = "https://cloud.yandex.ru/docs/resource-manager/operations/cloud/get-id"
-}
+# variable "cloud_id" {
+#   type        = string
+#   description = "https://cloud.yandex.ru/docs/resource-manager/operations/cloud/get-id"
+# }
 
-variable "folder_id" {
-  type        = string
-  description = "https://cloud.yandex.ru/docs/resource-manager/operations/folder/get-id"
-}
+# variable "folder_id" {
+#   type        = string
+#   description = "https://cloud.yandex.ru/docs/resource-manager/operations/folder/get-id"
+# }
 
 variable "default_zone" {
   type        = string
@@ -54,7 +54,8 @@ variable "default_zone" {
 # }
 
 variable "ssh-key" {
-  type = string
+  type    = string
+  default = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDf6mYU6+KXfSoxzl7JEHb4ffE2zd0Xk3fcpuvwV2F+QNaQqT8R6rUS4qDtNjc6WrJY+ubxjv1W5F+gKENJ7Dg4AxMrHNXDqT8lc9qzsrdnAQ416eNIHgr11KFWeWN4fffoBAsrs6g8L5UfU+vvSbPe0cLDfNJAI/bY1M4ePc8QBKpgXqn+M2lr2Uut+FKLqo8pqNX+lHunPl4vPgj0LURrXSE/BCQkmzT03aTbbh4D0zmHo2DRIf25W0HFBqFk01SUPSsFGUpoVmJJxOCuPpjek+Y2nQGoVTUztz4SbNh96B5gJAmw0yDgifHW82WuBj/m4+mng4MvtNpVSdMCoMyP"
 }
 
 variable "username" {
