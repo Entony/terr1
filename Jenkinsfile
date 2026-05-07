@@ -39,7 +39,7 @@ pipeline {
             steps {
                 script {
                     dir('src') {
-                        ithEnv([
+                        withEnv([
                             "YC_SERVICE_ACCOUNT_KEY_FILE=${YC_KEY_FILE}",
                             "YC_CLOUD_ID=${YC_CLOUD_ID}",
                             "YC_FOLDER_ID=${YC_FOLDER_ID}"
