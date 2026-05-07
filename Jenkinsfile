@@ -6,8 +6,8 @@ pipeline {
     }
 
     environment {
-        YC_CLOUD_ID  = 'b1gv77uktf2hqo7ed2mc'
-        YC_FOLDER_ID = 'b1gkg6dahs4fcqkhecdl'
+        YC_CLOUD_ID  = 'после выполнения убрал'
+        YC_FOLDER_ID = 'после выполнения убрал'
         YC_KEY_FILE  = credentials('yc-auth-key')
     }
 
