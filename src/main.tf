@@ -30,7 +30,7 @@ module "module_network" {
 }
 
 module "marketing-vm" {
-  source   = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main"
+  source   = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=1fad353c98abb708c491ef22899fee4db46b717d"
   env_name = "netology"
 
   # Задание2
@@ -67,7 +67,7 @@ module "marketing-vm" {
 }
 
 module "analytics-vm" {
-  source   = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main"
+  source   = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=1fad353c98abb708c491ef22899fee4db46b717d"
   env_name = "netology"
 
   # Задание 2
